@@ -1,0 +1,373 @@
+{
+  "selected_model": "GradientBoosting",
+  "selection_metric": "risk_f1_macro",
+  "training_samples": 3200,
+  "test_samples": 800,
+  "total_samples": 4000,
+  "candidates": {
+    "risk": {
+      "RandomForest": {
+        "accuracy": 0.98375,
+        "precision_macro": 0.4924906132665832,
+        "recall_macro": 0.4993654822335025,
+        "f1_macro": 0.4959042218021424,
+        "confusion_matrix": [
+          [
+            787,
+            1,
+            0,
+            0
+          ],
+          [
+            12,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "labels": [
+          "Low",
+          "Medium",
+          "High",
+          "Critical"
+        ]
+      },
+      "GradientBoosting": {
+        "accuracy": 0.985,
+        "precision_macro": 0.7431077694235588,
+        "recall_macro": 0.5410321489001692,
+        "f1_macro": 0.5676454692848135,
+        "confusion_matrix": [
+          [
+            787,
+            1,
+            0,
+            0
+          ],
+          [
+            11,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "labels": [
+          "Low",
+          "Medium",
+          "High",
+          "Critical"
+        ]
+      },
+      "LogisticRegression": {
+        "accuracy": 0.9825,
+        "precision_macro": 0.6180904522613065,
+        "recall_macro": 0.5397631133671743,
+        "f1_macro": 0.5580808080808081,
+        "confusion_matrix": [
+          [
+            785,
+            3,
+            0,
+            0
+          ],
+          [
+            11,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "labels": [
+          "Low",
+          "Medium",
+          "High",
+          "Critical"
+        ]
+      }
+    },
+    "aux": {
+      "RandomForest": {
+        "delay": {
+          "accuracy": 0.74125,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "confusion_matrix": [
+            [
+              593,
+              3
+            ],
+            [
+              204,
+              0
+            ]
+          ],
+          "labels": [
+            0,
+            1
+          ]
+        },
+        "budget_overrun": {
+          "accuracy": 0.8025,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "confusion_matrix": [
+            [
+              642,
+              0
+            ],
+            [
+              158,
+              0
+            ]
+          ],
+          "labels": [
+            0,
+            1
+          ]
+        },
+        "quality_issues": {
+          "accuracy": 0.8125,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "confusion_matrix": [
+            [
+              650,
+              3
+            ],
+            [
+              147,
+              0
+            ]
+          ],
+          "labels": [
+            0,
+            1
+          ]
+        },
+        "requirement_instability": {
+          "accuracy": 0.745,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "confusion_matrix": [
+            [
+              596,
+              1
+            ],
+            [
+              203,
+              0
+            ]
+          ],
+          "labels": [
+            0,
+            1
+          ]
+        }
+      },
+      "GradientBoosting": {
+        "delay": {
+          "accuracy": 0.73375,
+          "precision": 0.2,
+          "recall": 0.014705882352941176,
+          "f1": 0.0273972602739726,
+          "confusion_matrix": [
+            [
+              584,
+              12
+            ],
+            [
+              201,
+              3
+            ]
+          ],
+          "labels": [
+            0,
+            1
+          ]
+        },
+        "budget_overrun": {
+          "accuracy": 0.80375,
+          "precision": 0.6666666666666666,
+          "recall": 0.012658227848101266,
+          "f1": 0.024844720496894408,
+          "confusion_matrix": [
+            [
+              641,
+              1
+            ],
+            [
+              156,
+              2
+            ]
+          ],
+          "labels": [
+            0,
+            1
+          ]
+        },
+        "quality_issues": {
+          "accuracy": 0.8125,
+          "precision": 0.2,
+          "recall": 0.006802721088435374,
+          "f1": 0.013157894736842105,
+          "confusion_matrix": [
+            [
+              649,
+              4
+            ],
+            [
+              146,
+              1
+            ]
+          ],
+          "labels": [
+            0,
+            1
+          ]
+        },
+        "requirement_instability": {
+          "accuracy": 0.74125,
+          "precision": 0.16666666666666666,
+          "recall": 0.0049261083743842365,
+          "f1": 0.009569377990430622,
+          "confusion_matrix": [
+            [
+              592,
+              5
+            ],
+            [
+              202,
+              1
+            ]
+          ],
+          "labels": [
+            0,
+            1
+          ]
+        }
+      },
+      "LogisticRegression": {
+        "delay": {
+          "accuracy": 0.745,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "confusion_matrix": [
+            [
+              596,
+              0
+            ],
+            [
+              204,
+              0
+            ]
+          ],
+          "labels": [
+            0,
+            1
+          ]
+        },
+        "budget_overrun": {
+          "accuracy": 0.8025,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "confusion_matrix": [
+            [
+              642,
+              0
+            ],
+            [
+              158,
+              0
+            ]
+          ],
+          "labels": [
+            0,
+            1
+          ]
+        },
+        "quality_issues": {
+          "accuracy": 0.81625,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "confusion_matrix": [
+            [
+              653,
+              0
+            ],
+            [
+              147,
+              0
+            ]
+          ],
+          "labels": [
+            0,
+            1
+          ]
+        },
+        "requirement_instability": {
+          "accuracy": 0.74625,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "confusion_matrix": [
+            [
+              597,
+              0
+            ],
+            [
+              203,
+              0
+            ]
+          ],
+          "labels": [
+            0,
+            1
+          ]
+        }
+      }
+    }
+  }
+}

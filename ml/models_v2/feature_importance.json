@@ -1,0 +1,54 @@
+[
+  {
+    "feature": "testing_coverage",
+    "importance": 0.21221739344365015
+  },
+  {
+    "feature": "previous_project_success_rate",
+    "importance": 0.11953496452874943
+  },
+  {
+    "feature": "developer_experience",
+    "importance": 0.10449196864968224
+  },
+  {
+    "feature": "average_sprint_delay",
+    "importance": 0.10207291065099222
+  },
+  {
+    "feature": "code_complexity",
+    "importance": 0.10077975020136355
+  },
+  {
+    "feature": "requirement_change_count",
+    "importance": 0.08209747191424346
+  },
+  {
+    "feature": "project_budget",
+    "importance": 0.07651147935364325
+  },
+  {
+    "feature": "task_completion_rate",
+    "importance": 0.060988527476240034
+  },
+  {
+    "feature": "project_duration",
+    "importance": 0.0380004621164213
+  },
+  {
+    "feature": "communication_frequency",
+    "importance": 0.03595627622201268
+  },
+  {
+    "feature": "client_change_requests",
+    "importance": 0.029257683539793487
+  },
+  {
+    "feature": "team_size",
+    "importance": 0.022681739305290927
+  },
+  {
+    "feature": "bug_count",
+    "importance": 0.015409372597917232
+  }
+]

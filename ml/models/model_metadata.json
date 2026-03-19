@@ -1,0 +1,38 @@
+{
+  "features": [
+    "team_size",
+    "project_budget",
+    "project_duration",
+    "requirement_change_count",
+    "average_sprint_delay",
+    "bug_count",
+    "testing_coverage",
+    "code_complexity",
+    "developer_experience",
+    "communication_frequency",
+    "task_completion_rate",
+    "client_change_requests",
+    "previous_project_success_rate"
+  ],
+  "classes": [
+    "High",
+    "Low",
+    "Medium"
+  ],
+  "accuracy": 0.825,
+  "feature_importances": {
+    "requirement_change_count": 0.1976882870909863,
+    "average_sprint_delay": 0.16346459979328465,
+    "testing_coverage": 0.14867213399822976,
+    "bug_count": 0.09709787385998317,
+    "task_completion_rate": 0.08902668076498792,
+    "developer_experience": 0.06579713261497772,
+    "client_change_requests": 0.04744687757182707,
+    "code_complexity": 0.04683687176283654,
+    "previous_project_success_rate": 0.03226249915236891,
+    "project_budget": 0.03202555272108398,
+    "communication_frequency": 0.02965636865077929,
+    "project_duration": 0.025536377798661403,
+    "team_size": 0.024488744219993166
+  }
+}
