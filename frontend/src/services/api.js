@@ -1,23 +1,17 @@
 import axios from 'axios'
 
-// Use environment variable (Vercel will inject this)
-const API_URL = import.meta.env.VITE_API_URL;
-
-// Fallback (optional safety)
-const BASE_URL = API_URL || "https://smart-risk-ai2.onrender.com";
+const BASE_URL = import.meta.env.VITE_API_URL || "https://smart-risk-ai2.onrender.com";
 
 const API = axios.create({
   baseURL: BASE_URL,
 });
 
-// Attach token
 API.interceptors.request.use((config) => {
   const token = localStorage.getItem('token');
   if (token) config.headers.Authorization = `Bearer ${token}`;
   return config;
 });
 
-// Handle errors
 API.interceptors.response.use(
   (response) => response,
   (error) => {
@@ -43,18 +37,17 @@ API.interceptors.response.use(
   }
 );
 
-// APIs
 export const authAPI = {
   register: (data) => API.post('/auth/register', data),
   login:    (data) => API.post('/auth/login', data),
 };
 
 export const projectsAPI = {
-  list:   ()           => API.get('/projects/'),
-  create: (data)       => API.post('/projects/', data),
-  get:    (id)         => API.get(`/projects/${id}`),
-  update: (id, data)   => API.put(`/projects/${id}`, data),
-  delete: (id)         => API.delete(`/projects/${id}`),
+  list:   ()         => API.get('/projects/'),
+  create: (data)     => API.post('/projects/', data),
+  get:    (id)       => API.get(`/projects/${id}`),
+  update: (id, data) => API.put(`/projects/${id}`, data),
+  delete: (id)       => API.delete(`/projects/${id}`),
 };
 
 export const predictionsAPI = {
@@ -65,13 +58,13 @@ export const predictionsAPI = {
 };
 
 export const mlAPI = {
-  trainModel:        ()      => API.post('/ml/train-model'),
-  predictRisk:       (data)  => API.post('/ml/predict-risk', data),
-  modelMetrics:      ()      => API.get('/ml/model-metrics'),
-  featureImportance: ()      => API.get('/ml/feature-importance'),
-  whatIf:            (data)  => API.post('/ml/what-if', data),
-  riskForecast:      (data)  => API.post('/ml/risk-forecast', data),
-  datasetStats:      ()      => API.get('/ml/dataset-stats'),
+  trainModel:        ()     => API.post('/ml/train-model'),
+  predictRisk:       (data) => API.post('/ml/predict-risk', data),
+  modelMetrics:      ()     => API.get('/ml/model-metrics'),
+  featureImportance: ()     => API.get('/ml/feature-importance'),
+  whatIf:            (data) => API.post('/ml/what-if', data),
+  riskForecast:      (data) => API.post('/ml/risk-forecast', data),
+  datasetStats:      ()     => API.get('/ml/dataset-stats'),
 };
 
 export default API;
