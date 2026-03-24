@@ -270,13 +270,7 @@ All endpoints are documented interactively at **`/docs`** (Swagger UI).
 - PostgreSQL / SQLite
 - Docker + Docker Compose
 
----
-
-## 📄 License
-
-This project is licensed under the [MIT License](LICENSE) — free to use for academic and personal purposes.
-
----
+___
 
 <div align="center">
 
