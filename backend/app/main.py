@@ -15,6 +15,7 @@ app = FastAPI(
     version="1.0.0"
 )
 
+# ✅ CORS FIX (IMPORTANT)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
@@ -31,22 +32,27 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# ✅ PRE-FLIGHT FIX (VERY IMPORTANT)
+@app.options("/{full_path:path}")
+async def preflight_handler(full_path: str):
+    return {"message": "OK"}
+
+# Routers
 app.include_router(auth.router)
 app.include_router(projects.router)
 app.include_router(predictions.router)
 app.include_router(ml.router)
 
-
+# Startup
 @app.on_event("startup")
 def startup_event():
     init_db()
     print("✅ Database tables created")
 
-
+# Routes
 @app.get("/")
 def root():
     return {"message": "Smart AI Risk Prediction System API", "version": "1.0.0"}
-
 
 @app.get("/health")
 def health():
