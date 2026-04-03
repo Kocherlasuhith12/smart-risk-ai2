@@ -11,7 +11,7 @@ cd ml
 python3 generate_dataset.py
 python3 train_model.py
 cd ..
-
+ 
 # Step 2: Backend
 echo ""
 echo "🚀 Step 2: Starting backend..."
