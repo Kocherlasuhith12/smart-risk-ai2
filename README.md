@@ -2,7 +2,7 @@
 
 <img src="https://img.shields.io/badge/AI%20Powered-Risk%20Prediction-blue?style=for-the-badge&logo=brain&logoColor=white" />
 
-# 🧠 SmartRisk AI
+# 🧠 SmartRisk AI 
 ### Software Project Risk Prediction & Process Optimisation
 
 *An end-to-end AI-powered platform that predicts project risk, explains key failure drivers, and recommends actionable process improvements — built with a production-grade full-stack architecture.*
