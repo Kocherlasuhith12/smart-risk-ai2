@@ -3,6 +3,7 @@ Smart AI System for Software Project Risk Prediction and Process Optimisation
 FastAPI Backend Entry Point
 """
 
+from app.models.database import get_db
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.models.database import init_db
