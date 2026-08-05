@@ -8,7 +8,7 @@ import { motion } from 'framer-motion'
 import { Database, TrendingUp, Users, DollarSign, Bug, Clock, Shield } from 'lucide-react'
 
 const RISK_COLORS = { Low: '#22c55e', Medium: '#f59e0b', High: '#ef4444', Critical: '#d946ef' }
-const BAR_COLORS = ['#6366f1', '#8b5cf6', '#a78bfa', '#c4b5fd', '#818cf8', '#6366f1', '#4f46e5', '#4338ca', '#3730a3', '#312e81']
+const BAR_COLORS = ['#10b981', '#059669', '#34d399', '#0ea5e9', '#0f766e', '#14b8a6', '#0284c7', '#047857', '#065f46', '#064e3b']
 
 const fade = {
   hidden: { opacity: 0, y: 20 },
@@ -38,19 +38,19 @@ export default function DatasetAnalytics() {
   }))
 
   const summaryCards = [
-    { label: 'Total Projects Analyzed', value: stats.total_projects?.toLocaleString(), icon: Database, color: 'text-indigo-400' },
-    { label: 'Average Team Size', value: feats.team_size?.mean, icon: Users, color: 'text-sky-400' },
+    { label: 'Total Projects Analyzed', value: stats.total_projects?.toLocaleString(), icon: Database, color: 'text-emerald-400' },
+    { label: 'Average Team Size', value: feats.team_size?.mean, icon: Users, color: 'text-emerald-300' },
     { label: 'Average Budget', value: feats.project_budget ? `$${Math.round(feats.project_budget.mean).toLocaleString()}` : '—', icon: DollarSign, color: 'text-emerald-400' },
     { label: 'Avg Duration (months)', value: feats.project_duration?.mean, icon: Clock, color: 'text-amber-400' },
     { label: 'Average Bug Count', value: feats.bug_count?.mean, icon: Bug, color: 'text-rose-400' },
-    { label: 'Avg Testing Coverage', value: feats.testing_coverage ? `${feats.testing_coverage.mean}%` : '—', icon: Shield, color: 'text-violet-400' },
+    { label: 'Avg Testing Coverage', value: feats.testing_coverage ? `${feats.testing_coverage.mean}%` : '—', icon: Shield, color: 'text-teal-400' },
   ]
 
   return (
     <div className="space-y-6 max-w-6xl">
       <motion.div variants={fade} initial="hidden" animate="visible">
         <h1 className="text-2xl font-bold text-white flex items-center gap-3">
-          <Database className="w-6 h-6 text-indigo-400" />
+          <Database className="w-6 h-6 text-emerald-400" />
           Dataset Analytics
         </h1>
         <p className="text-slate-400 text-sm mt-1">
@@ -110,7 +110,7 @@ export default function DatasetAnalytics() {
               <XAxis dataKey="range" tick={{ fill: '#94a3b8', fontSize: 10 }} />
               <YAxis tick={{ fill: '#94a3b8', fontSize: 11 }} />
               <Tooltip contentStyle={{ background: '#1e293b', border: '1px solid #334155', borderRadius: '8px', color: '#e2e8f0' }} itemStyle={{ color: '#e2e8f0' }} labelStyle={{ color: '#94a3b8' }} />
-              <Bar dataKey="count" radius={[4, 4, 0, 0]} fill="#38bdf8" />
+              <Bar dataKey="count" radius={[4, 4, 0, 0]} fill="#34d399" />
             </BarChart>
           </ResponsiveContainer>
         </motion.div>
@@ -123,7 +123,7 @@ export default function DatasetAnalytics() {
               <XAxis dataKey="range" tick={{ fill: '#94a3b8', fontSize: 10 }} />
               <YAxis tick={{ fill: '#94a3b8', fontSize: 11 }} />
               <Tooltip contentStyle={{ background: '#1e293b', border: '1px solid #334155', borderRadius: '8px', color: '#e2e8f0' }} itemStyle={{ color: '#e2e8f0' }} labelStyle={{ color: '#94a3b8' }} />
-              <Bar dataKey="count" radius={[4, 4, 0, 0]} fill="#a78bfa" />
+              <Bar dataKey="count" radius={[4, 4, 0, 0]} fill="#059669" />
             </BarChart>
           </ResponsiveContainer>
         </motion.div>
@@ -170,13 +170,13 @@ export default function DatasetAnalytics() {
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="text-left text-slate-500 border-b border-slate-700">
+              <tr className="text-left text-slate-500 border-b border-emerald-950/60">
                 {['Feature', 'Mean', 'Median', 'Min', 'Max', 'Std Dev'].map(h => (
                   <th key={h} className="pb-2 pr-4 font-medium">{h}</th>
                 ))}
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-700/50">
+            <tbody className="divide-y divide-emerald-950/30">
               {Object.entries(feats).map(([feat, s]) => (
                 <tr key={feat} className="text-slate-300">
                   <td className="py-2 pr-4 font-medium text-white capitalize">{feat.replaceAll('_', ' ')}</td>

@@ -107,15 +107,17 @@ def generate_synthetic_dataset(repo_root: Path, n: int = 4000, seed: int = 42) -
     )
     risk_score_01 = _sigmoid((z - 0.35) * 4.2)  # spread into 0..1
 
-    # Bucket into 4 risk classes
-    # Tuned cutoffs to produce all classes.
+    p35 = np.percentile(risk_score_01, 35)
+    p70 = np.percentile(risk_score_01, 70)
+    p90 = np.percentile(risk_score_01, 90)
+
     risk_level = np.where(
-        risk_score_01 < 0.35,
+        risk_score_01 < p35,
         "Low",
         np.where(
-            risk_score_01 < 0.55,
+            risk_score_01 < p70,
             "Medium",
-            np.where(risk_score_01 < 0.75, "High", "Critical"),
+            np.where(risk_score_01 < p90, "High", "Critical"),
         ),
     )
 

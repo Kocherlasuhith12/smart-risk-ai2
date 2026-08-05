@@ -2,54 +2,120 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+/* ========= Dark Theme (Default) ========= */
+html.theme-dark body {
   font-family: 'Inter', system-ui, sans-serif;
-  background: radial-gradient(circle at top, #1e293b 0, #020617 55%, #000 100%);
-  color: #e2e8f0;
+  background: radial-gradient(circle at top, #022c22 0, #030712 55%, #000000 100%);
+  color: #f9fafb;
 }
 
+/* ========= Light Theme ========= */
+html.theme-light body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #f8fafc;
+  color: #111827;
+}
+
+/* ========= Theme utility classes ========= */
+
+/* Text colors */
+.theme-text-primary {
+  color: #f9fafb;
+}
+html.theme-light .theme-text-primary {
+  color: #111827;
+}
+
+.theme-text-secondary {
+  color: #94a3b8;
+}
+html.theme-light .theme-text-secondary {
+  color: #4b5563;
+}
+
+.theme-text-muted {
+  color: #64748b;
+}
+html.theme-light .theme-text-muted {
+  color: #9ca3af;
+}
+
+/* Card */
+.theme-card {
+  @apply bg-slate-950/90 border border-emerald-950/60 shadow-2xl backdrop-blur-xl;
+}
+html.theme-light .theme-card {
+  @apply bg-white border-gray-200 shadow-lg shadow-gray-200/50 backdrop-blur-none;
+}
+
+/* ========= Component classes ========= */
+
+/* Card (dark default) */
 .card {
-  @apply bg-slate-800 rounded-2xl border border-slate-700 p-8 md:p-10 shadow-2xl;
+  @apply bg-slate-950/90 rounded-2xl border border-emerald-950/60 p-8 md:p-10 shadow-2xl backdrop-blur-xl;
+}
+html.theme-light .card {
+  @apply bg-white border-gray-200 shadow-lg shadow-gray-200/50 backdrop-blur-none;
+  color: #111827;
 }
 
 .btn-primary {
-  @apply w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-lg transition-all duration-200;
+  @apply w-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-3 rounded-lg transition-all duration-200 shadow-[0_0_15px_rgba(16,185,129,0.2)];
 }
 
 .btn-secondary {
-  @apply bg-slate-700 hover:bg-slate-600 text-slate-200 font-semibold py-2 px-4 rounded-lg transition-colors;
+  @apply bg-slate-900 hover:bg-slate-800 text-slate-200 font-semibold py-2 px-4 rounded-lg border border-slate-800/80 transition-colors;
+}
+html.theme-light .btn-secondary {
+  @apply bg-gray-100 hover:bg-gray-200 text-gray-700 border-gray-200;
 }
 
 .input-field {
-  @apply w-full bg-slate-900 border border-slate-600 rounded-lg pl-12 pr-4 py-3 text-slate-100 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500;
+  @apply w-full bg-slate-950 border border-slate-800 rounded-lg pl-12 pr-4 py-3 text-slate-100 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500;
+}
+html.theme-light .input-field {
+  @apply bg-gray-50 border-gray-300 text-gray-900;
 }
 
 .label {
   @apply block text-sm font-medium text-slate-400 mb-1;
 }
+html.theme-light .label {
+  @apply text-gray-600;
+}
 
-.risk-high  { @apply text-red-400 bg-red-900/30 border border-red-800; }
-.risk-medium { @apply text-yellow-400 bg-yellow-900/30 border border-yellow-800; }
-.risk-low   { @apply text-green-400 bg-green-900/30 border border-green-800; }
+.risk-high  { @apply text-red-400 bg-red-900/30 border border-red-800/40; }
+.risk-medium { @apply text-yellow-400 bg-yellow-900/30 border border-yellow-800/40; }
+.risk-low   { @apply text-green-400 bg-green-900/30 border border-green-800/40; }
+
+html.theme-light .risk-high  { @apply text-red-700 bg-red-50 border-red-200; }
+html.theme-light .risk-medium { @apply text-yellow-700 bg-yellow-50 border-yellow-200; }
+html.theme-light .risk-low   { @apply text-green-700 bg-green-50 border-green-200; }
 
 /* Glassmorphism utilities */
 .glass-panel {
-  @apply bg-slate-900/60 border border-slate-700/60 backdrop-blur-xl rounded-2xl shadow-lg shadow-slate-900/40;
+  @apply bg-slate-950/80 border border-emerald-950/60 backdrop-blur-xl rounded-2xl shadow-lg shadow-black/80;
+}
+html.theme-light .glass-panel {
+  @apply bg-white/90 border-gray-200 shadow-lg shadow-gray-200/50;
 }
 
 .glass-soft {
-  @apply bg-slate-900/40 border border-slate-700/40 backdrop-blur-xl rounded-2xl;
+  @apply bg-slate-950/50 border border-slate-800/60 backdrop-blur-xl rounded-2xl;
+}
+html.theme-light .glass-soft {
+  @apply bg-white/60 border-gray-200;
 }
 
 .gradient-ring {
-  background: radial-gradient(circle at top left, #4f46e5 0, transparent 55%),
-              radial-gradient(circle at bottom right, #0ea5e9 0, transparent 55%);
+  background: radial-gradient(circle at top left, #10b981 0, transparent 55%),
+              radial-gradient(circle at bottom right, #059669 0, transparent 55%);
 }
 
 .pulse-glow {
   box-shadow:
-    0 0 0 1px rgba(129, 140, 248, 0.6),
-    0 0 40px rgba(56, 189, 248, 0.25);
+    0 0 0 1px rgba(16, 185, 129, 0.6),
+    0 0 40px rgba(16, 185, 129, 0.15);
 }
 
 /* Slider styling */
@@ -58,8 +124,11 @@ input[type="range"] {
   appearance: none;
   height: 6px;
   border-radius: 9999px;
-  background: #334155;
+  background: #111827;
   outline: none;
+}
+html.theme-light input[type="range"] {
+  background: #e5e7eb;
 }
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
@@ -67,9 +136,124 @@ input[type="range"]::-webkit-slider-thumb {
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: #8b5cf6;
+  background: #10b981;
   cursor: pointer;
-  box-shadow: 0 0 6px rgba(139, 92, 246, 0.5);
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+}
+
+/* ========= Global Light Theme Overrides ========= */
+/* These override Tailwind utility classes used inline across all pages */
+
+/* Dark backgrounds → white/gray in light mode */
+html.theme-light .bg-slate-950,
+html.theme-light .bg-slate-950\/90,
+html.theme-light .bg-slate-950\/85,
+html.theme-light .bg-slate-950\/80,
+html.theme-light .bg-slate-950\/70,
+html.theme-light .bg-slate-950\/65,
+html.theme-light .bg-slate-950\/60,
+html.theme-light .bg-slate-950\/50 {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+html.theme-light .bg-slate-900,
+html.theme-light .bg-slate-900\/70 {
+  background-color: #f9fafb !important;
+}
+
+html.theme-light .bg-slate-700 {
+  background-color: #e5e7eb !important;
+}
+
+html.theme-light .border-slate-700 {
+  border-color: #e5e7eb !important;
+}
+
+/* Text overrides */
+html.theme-light .text-white,
+html.theme-light .text-slate-50,
+html.theme-light .text-slate-100 {
+  color: #111827 !important;
+}
+
+html.theme-light .text-slate-200 {
+  color: #1f2937 !important;
+}
+
+html.theme-light .text-slate-300 {
+  color: #374151 !important;
+}
+
+html.theme-light .text-slate-400 {
+  color: #6b7280 !important;
+}
+
+html.theme-light .text-slate-500 {
+  color: #9ca3af !important;
+}
+
+html.theme-light .text-slate-600 {
+  color: #6b7280 !important;
+}
+
+html.theme-light .text-emerald-100 {
+  color: #065f46 !important;
+}
+
+/* Border overrides */
+html.theme-light .border-emerald-950\/60,
+html.theme-light .border-emerald-950\/40,
+html.theme-light .border-emerald-500\/30 {
+  border-color: #e5e7eb !important;
+}
+
+html.theme-light .border-slate-800,
+html.theme-light .border-slate-800\/80,
+html.theme-light .border-slate-800\/60,
+html.theme-light .border-slate-900 {
+  border-color: #e5e7eb !important;
+}
+
+/* Shadow overrides */
+html.theme-light .shadow-black\/80 {
+  --tw-shadow-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+html.theme-light .shadow-emerald-950\/40 {
+  --tw-shadow-color: rgba(16, 185, 129, 0.1) !important;
+}
+
+/* Ring overrides */
+html.theme-light .ring-emerald-500\/30 {
+  --tw-ring-color: rgba(16, 185, 129, 0.2) !important;
+}
+
+html.theme-light .ring-slate-800,
+html.theme-light .ring-slate-900 {
+  --tw-ring-color: #e5e7eb !important;
+}
+
+/* Gradient text keeps original for branding effect */
+
+/* Pulse glow in light mode */
+html.theme-light .pulse-glow {
+  box-shadow:
+    0 0 0 1px rgba(16, 185, 129, 0.3),
+    0 0 20px rgba(16, 185, 129, 0.08);
+}
+
+/* Fix backdrop-blur in light mode */
+html.theme-light .backdrop-blur,
+html.theme-light .backdrop-blur-lg,
+html.theme-light .backdrop-blur-xl {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Fix select/option in light mode */
+html.theme-light select.input-field option {
+  background-color: white;
+  color: #111827;
 }
 
 /* Print styles for PDF export */

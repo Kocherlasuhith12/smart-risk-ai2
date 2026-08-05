@@ -91,7 +91,7 @@ export default function AddProject() {
       </div>
 
       {/* Hint */}
-      <div className="mt-4 p-4 bg-indigo-900/20 border border-indigo-800 rounded-xl text-sm text-indigo-300">
+      <div className="mt-4 p-4 bg-emerald-950/20 border border-emerald-900/40 rounded-xl text-sm text-emerald-300">
         💡 After creating the project, you can run the AI risk analysis from the project detail page.
       </div>
     </div>

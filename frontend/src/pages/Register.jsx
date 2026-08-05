@@ -1,15 +1,18 @@
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
-import { Brain } from 'lucide-react'
+import { useTheme } from '../context/ThemeContext'
+import Logo from '../components/Logo'
 
 export default function Register() {
   const { register } = useAuth()
+  const { isDark } = useTheme()
   const navigate = useNavigate()
   const [form, setForm] = useState({
     name: '',
     email: '',
     password: '',
+    confirmPassword: '',
     role: 'project_manager',
   })
   const [error, setError] = useState('')
@@ -20,8 +23,15 @@ export default function Register() {
     setError('')
     setLoading(true)
 
+    if (form.password !== form.confirmPassword) {
+      setError('Passwords do not match.')
+      setLoading(false)
+      return
+    }
+
     try {
-      await register(form)
+      const { confirmPassword, ...registerData } = form
+      await register(registerData)
       navigate('/login')
     } catch (err) {
       setError(err.response?.data?.detail || 'Registration failed.')
@@ -36,14 +46,16 @@ export default function Register() {
   })
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-950 px-6 py-10">
+    <div className={`min-h-screen flex items-center justify-center px-6 py-10 transition-colors duration-200
+      ${isDark ? 'bg-slate-950' : 'bg-gray-50'}`}
+    >
       <div className="w-full max-w-lg">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-indigo-600 mb-4">
-            <Brain className="w-8 h-8 text-white" />
+          <div className="inline-flex items-center justify-center mb-4">
+            <Logo size={64} />
           </div>
-          <h1 className="text-4xl font-bold text-white">Create Account</h1>
-          <p className="text-slate-400 text-base mt-3">
+          <h1 className={`text-4xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>Create Account</h1>
+          <p className={`text-base mt-3 ${isDark ? 'text-slate-400' : 'text-gray-500'}`}>
             Join SmartRisk AI Platform
           </p>
         </div>
@@ -90,6 +102,17 @@ export default function Register() {
             </div>
 
             <div>
+              <label className="label">Confirm Password</label>
+              <input
+                type="password"
+                className="input-field"
+                placeholder="Verify your password"
+                required
+                {...f('confirmPassword')}
+              />
+            </div>
+
+            <div>
               <label className="label">Role</label>
               <select className="input-field" {...f('role')}>
                 <option value="project_manager">Project Manager</option>
@@ -104,9 +127,9 @@ export default function Register() {
             </button>
           </form>
 
-          <p className="text-center text-sm text-slate-400 mt-4">
+          <p className={`text-center text-sm mt-4 ${isDark ? 'text-slate-400' : 'text-gray-500'}`}>
             Already have an account?{' '}
-            <Link to="/login" className="text-indigo-400 hover:underline">
+            <Link to="/login" className="text-emerald-500 hover:underline font-medium">
               Login
             </Link>
           </p>

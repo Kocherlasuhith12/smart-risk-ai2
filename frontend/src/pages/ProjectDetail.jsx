@@ -37,10 +37,10 @@ const fade = {
 // Confusion matrix cell color
 function cmColor(val, max) {
   const intensity = max > 0 ? val / max : 0
-  if (intensity > 0.7) return 'bg-indigo-500 text-white'
-  if (intensity > 0.3) return 'bg-indigo-500/40 text-indigo-100'
-  if (intensity > 0) return 'bg-indigo-500/15 text-indigo-200'
-  return 'bg-slate-800 text-slate-500'
+  if (intensity > 0.7) return 'bg-emerald-500 text-slate-950 font-bold'
+  if (intensity > 0.3) return 'bg-emerald-500/40 text-emerald-100'
+  if (intensity > 0) return 'bg-emerald-500/15 text-emerald-200'
+  return 'bg-slate-900 text-slate-500'
 }
 
 // ── What-If slider config ──
@@ -257,8 +257,8 @@ export default function ProjectDetail() {
       {editOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
           <button type="button" className="absolute inset-0 bg-black/60" onClick={() => setEditOpen(false)} aria-label="Close edit modal" />
-          <div className="relative w-full max-w-3xl rounded-2xl border border-slate-700 bg-slate-900/90 backdrop-blur-xl shadow-2xl">
-            <div className="flex items-center justify-between border-b border-slate-700 px-5 py-4">
+          <div className="relative w-full max-w-3xl rounded-2xl border border-emerald-950/60 bg-slate-950/90 backdrop-blur-xl shadow-2xl">
+            <div className="flex items-center justify-between border-b border-emerald-950/60 px-5 py-4">
               <div>
                 <p className="text-sm font-semibold text-white">Edit project parameters</p>
                 <p className="text-xs text-slate-400">Updating inputs will reset the previous prediction.</p>
@@ -318,14 +318,14 @@ export default function ProjectDetail() {
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
-                  { label: 'Risk Score', value: health?.risk_score ?? 0, color: 'bg-indigo-500' },
-                  { label: 'Delay Score', value: health?.delay_score ?? 0, color: 'bg-sky-500' },
-                  { label: 'Budget Score', value: health?.budget_score ?? 0, color: 'bg-emerald-500' },
-                  { label: 'Quality Score', value: health?.quality_score ?? 0, color: 'bg-amber-500' },
-                  { label: 'Team Efficiency', value: health?.team_efficiency_score ?? 0, color: 'bg-violet-500' },
-                  { label: 'Stability', value: health?.stability_score ?? 0, color: 'bg-cyan-500' },
+                  { label: 'Risk Score', value: health?.risk_score ?? 0, color: 'bg-emerald-500' },
+                  { label: 'Delay Score', value: health?.delay_score ?? 0, color: 'bg-teal-500' },
+                  { label: 'Budget Score', value: health?.budget_score ?? 0, color: 'bg-emerald-600' },
+                  { label: 'Quality Score', value: health?.quality_score ?? 0, color: 'bg-emerald-400' },
+                  { label: 'Team Efficiency', value: health?.team_efficiency_score ?? 0, color: 'bg-emerald-500' },
+                  { label: 'Stability', value: health?.stability_score ?? 0, color: 'bg-teal-600' },
                 ].map((k) => (
-                  <div key={k.label} className="bg-slate-900 rounded-xl p-4 border border-slate-700/60">
+                  <div key={k.label} className="bg-slate-950 rounded-xl p-4 border border-emerald-950/40">
                     <div className="flex items-center justify-between mb-2">
                       <p className="text-xs text-slate-400">{k.label}</p>
                       <p className="text-sm font-semibold text-white">{Math.round(k.value)}</p>
@@ -337,7 +337,7 @@ export default function ProjectDetail() {
                   </div>
                 ))}
               </div>
-              <div className="mt-4 p-4 bg-slate-900 rounded-xl border border-slate-700/60">
+              <div className="mt-4 p-4 bg-slate-950 rounded-xl border border-emerald-950/40">
                 <p className="text-xs font-semibold text-slate-200 mb-1">Reasoning summary</p>
                 <p className="text-sm text-slate-300">{prediction.reasoning_summary}</p>
               </div>
@@ -375,19 +375,19 @@ export default function ProjectDetail() {
           {modelInfo && (
             <motion.div variants={fade} initial="hidden" animate="visible" className="card">
               <div className="flex items-center gap-2 mb-5">
-                <Cpu className="w-5 h-5 text-indigo-400" />
+                <Cpu className="w-5 h-5 text-emerald-400" />
                 <h2 className="text-base font-semibold text-white">Model Performance & Transparency</h2>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-6">
                 {[
-                  { label: 'Model', value: modelInfo.model_name, color: 'text-indigo-400' },
-                  { label: 'Accuracy', value: modelInfo.accuracy != null ? `${(modelInfo.accuracy * 100).toFixed(1)}%` : '—', color: 'text-emerald-400' },
-                  { label: 'Precision', value: modelInfo.precision != null ? `${(modelInfo.precision * 100).toFixed(1)}%` : '—', color: 'text-sky-400' },
-                  { label: 'Recall', value: modelInfo.recall != null ? `${(modelInfo.recall * 100).toFixed(1)}%` : '—', color: 'text-amber-400' },
-                  { label: 'F1 Score', value: modelInfo.f1_score != null ? `${(modelInfo.f1_score * 100).toFixed(1)}%` : '—', color: 'text-violet-400' },
-                  { label: 'Training Samples', value: modelInfo.training_samples?.toLocaleString() ?? '—', color: 'text-rose-400' },
+                  { label: 'Model', value: modelInfo.model_name, color: 'text-emerald-400' },
+                  { label: 'Accuracy', value: modelInfo.accuracy != null ? `${(modelInfo.accuracy * 100).toFixed(1)}%` : '—', color: 'text-emerald-300' },
+                  { label: 'Precision', value: modelInfo.precision != null ? `${(modelInfo.precision * 100).toFixed(1)}%` : '—', color: 'text-emerald-400' },
+                  { label: 'Recall', value: modelInfo.recall != null ? `${(modelInfo.recall * 100).toFixed(1)}%` : '—', color: 'text-emerald-500' },
+                  { label: 'F1 Score', value: modelInfo.f1_score != null ? `${(modelInfo.f1_score * 100).toFixed(1)}%` : '—', color: 'text-teal-400' },
+                  { label: 'Training Samples', value: modelInfo.training_samples?.toLocaleString() ?? '—', color: 'text-emerald-600' },
                 ].map(m => (
-                  <div key={m.label} className="bg-slate-900 rounded-xl p-4 border border-slate-700/60 text-center">
+                  <div key={m.label} className="bg-slate-950 rounded-xl p-4 border border-emerald-950/40 text-center">
                     <p className="text-xs text-slate-400 mb-1">{m.label}</p>
                     <p className={`text-lg font-bold ${m.color}`}>{m.value}</p>
                   </div>
@@ -433,15 +433,15 @@ export default function ProjectDetail() {
                     ]}>
                       <defs>
                         <linearGradient id="rocGrad" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="5%" stopColor="#6366f1" stopOpacity={0.4} />
-                          <stop offset="95%" stopColor="#6366f1" stopOpacity={0.05} />
+                          <stop offset="5%" stopColor="#10b981" stopOpacity={0.4} />
+                          <stop offset="95%" stopColor="#10b981" stopOpacity={0.05} />
                         </linearGradient>
                       </defs>
                       <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
                       <XAxis dataKey="fpr" tick={{ fill: '#94a3b8', fontSize: 11 }} label={{ value: 'False Positive Rate', position: 'insideBottom', offset: -3, fill: '#94a3b8', fontSize: 10 }} />
                       <YAxis tick={{ fill: '#94a3b8', fontSize: 11 }} label={{ value: 'True Positive Rate', angle: -90, position: 'insideLeft', fill: '#94a3b8', fontSize: 10 }} />
                       <Tooltip contentStyle={{ background: '#1e293b', border: '1px solid #334155', borderRadius: 8, color: '#e2e8f0' }} itemStyle={{ color: '#e2e8f0' }} labelStyle={{ color: '#94a3b8' }} />
-                      <Area type="monotone" dataKey="tpr" stroke="#6366f1" strokeWidth={2} fill="url(#rocGrad)" />
+                      <Area type="monotone" dataKey="tpr" stroke="#10b981" strokeWidth={2} fill="url(#rocGrad)" />
                       <Line type="linear" data={[{ fpr: 0, tpr: 0 }, { fpr: 1, tpr: 1 }]} dataKey="tpr" stroke="#475569" strokeDasharray="5 5" dot={false} />
                     </AreaChart>
                   </ResponsiveContainer>
@@ -504,7 +504,7 @@ export default function ProjectDetail() {
           {forecast && (
             <motion.div variants={fade} initial="hidden" animate="visible" className="card">
               <div className="flex items-center gap-2 mb-4">
-                <TrendingUp className="w-5 h-5 text-sky-400" />
+                <TrendingUp className="w-5 h-5 text-emerald-400" />
                 <h2 className="text-base font-semibold text-white">Risk Forecast (Next 3 Months)</h2>
               </div>
               <p className="text-xs text-slate-400 mb-4">
@@ -527,7 +527,7 @@ export default function ProjectDetail() {
               </ResponsiveContainer>
               <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-3">
                 {forecast.timeline.map(t => (
-                  <div key={t.label} className="bg-slate-900 rounded-xl p-3 border border-slate-700/60 text-center">
+                  <div key={t.label} className="bg-slate-950 rounded-xl p-3 border border-emerald-950/40 text-center">
                     <p className="text-xs text-slate-400">{t.label}</p>
                     <p className={`text-lg font-bold ${
                       t.risk_score > 60 ? 'text-red-400' : t.risk_score > 40 ? 'text-amber-400' : 'text-emerald-400'
@@ -542,7 +542,7 @@ export default function ProjectDetail() {
           {/* ── 5. What-If Simulation ── */}
           <motion.div variants={fade} initial="hidden" animate="visible" className="card">
             <div className="flex items-center gap-2 mb-4">
-              <Sliders className="w-5 h-5 text-violet-400" />
+              <Sliders className="w-5 h-5 text-emerald-400" />
               <h2 className="text-base font-semibold text-white">What-If Simulation</h2>
             </div>
             <p className="text-xs text-slate-400 mb-5">
@@ -550,7 +550,7 @@ export default function ProjectDetail() {
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-5">
               {whatIfSliders.map(s => (
-                <div key={s.key} className="bg-slate-900 rounded-xl p-4 border border-slate-700/60">
+                <div key={s.key} className="bg-slate-950 rounded-xl p-4 border border-emerald-950/40">
                   <div className="flex items-center justify-between mb-2">
                     <label className="text-xs text-slate-400">{s.label}</label>
                     <span className="text-sm font-semibold text-white">{whatIfValues[s.key] ?? s.min}</span>
@@ -559,7 +559,7 @@ export default function ProjectDetail() {
                     type="range" min={s.min} max={s.max} step={s.step}
                     value={whatIfValues[s.key] ?? s.min}
                     onChange={e => setWhatIfValues(prev => ({ ...prev, [s.key]: Number(e.target.value) }))}
-                    className="w-full h-1.5 bg-slate-700 rounded-full appearance-none cursor-pointer accent-violet-500"
+                    className="w-full h-1.5 bg-slate-850 rounded-full appearance-none cursor-pointer accent-emerald-500"
                   />
                   <div className="flex justify-between text-[10px] text-slate-500 mt-1">
                     <span>{s.min}</span>
@@ -576,7 +576,7 @@ export default function ProjectDetail() {
 
             {whatIfResult && (
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mt-5 grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="bg-slate-900 rounded-xl p-5 border border-slate-700/60">
+                <div className="bg-slate-950 rounded-xl p-5 border border-emerald-950/40">
                   <p className="text-xs text-slate-400 mb-1">Current Risk</p>
                   <p className={`text-3xl font-bold ${
                     whatIfResult.baseline.risk_score > 60 ? 'text-red-400' : whatIfResult.baseline.risk_score > 40 ? 'text-amber-400' : 'text-emerald-400'
@@ -586,7 +586,7 @@ export default function ProjectDetail() {
                 {whatIfResult.scenarios.map((sc, i) => {
                   const delta = sc.risk_score - whatIfResult.baseline.risk_score
                   return (
-                    <div key={i} className="bg-slate-900 rounded-xl p-5 border border-slate-700/60">
+                    <div key={i} className="bg-slate-950 rounded-xl p-5 border border-emerald-950/40">
                       <p className="text-xs text-slate-400 mb-1">Simulated Risk</p>
                       <p className={`text-3xl font-bold ${
                         sc.risk_score > 60 ? 'text-red-400' : sc.risk_score > 40 ? 'text-amber-400' : 'text-emerald-400'
@@ -610,7 +610,7 @@ export default function ProjectDetail() {
               <h2 className="text-base font-semibold text-white mb-4">Key Risk Drivers</h2>
               <div className="space-y-3">
                 {prediction.top_risk_factors?.length ? prediction.top_risk_factors.map((f, i) => (
-                  <div key={f.feature} className="flex items-start justify-between gap-4 bg-slate-900 rounded-lg border border-slate-700 p-3">
+                  <div key={f.feature} className="flex items-start justify-between gap-4 bg-slate-950 rounded-lg border border-emerald-950/40 p-3">
                     <div>
                       <p className="text-sm font-semibold text-slate-100">{i + 1}. {f.label}</p>
                       <p className="text-xs text-slate-400 mt-1">
@@ -631,7 +631,7 @@ export default function ProjectDetail() {
               <h2 className="text-base font-semibold text-white mb-4">Positive Factors</h2>
               <div className="space-y-3">
                 {prediction.top_positive_factors?.length ? prediction.top_positive_factors.map((f, i) => (
-                  <div key={f.feature} className="flex items-start justify-between gap-4 bg-slate-900 rounded-lg border border-slate-700 p-3">
+                  <div key={f.feature} className="flex items-start justify-between gap-4 bg-slate-950 rounded-lg border border-emerald-950/40 p-3">
                     <div>
                       <p className="text-sm font-semibold text-slate-100">{i + 1}. {f.label}</p>
                       <p className="text-xs text-slate-400 mt-1">
@@ -660,7 +660,7 @@ export default function ProjectDetail() {
                 <Tooltip contentStyle={{ background: '#1e293b', border: '1px solid #334155', borderRadius: '8px', color: '#e2e8f0' }} itemStyle={{ color: '#e2e8f0' }} labelStyle={{ color: '#94a3b8' }} formatter={(v) => `${v}%`} />
                 <Bar dataKey="value" radius={[0, 4, 4, 0]}>
                   {(prediction.feature_importance || []).slice(0, 10).map((_, i) => (
-                    <Cell key={i} fill={i === 0 ? '#6366f1' : i === 1 ? '#22c55e' : '#38bdf8'} />
+                    <Cell key={i} fill={i === 0 ? '#10b981' : i === 1 ? '#059669' : '#047857'} />
                   ))}
                 </Bar>
               </BarChart>
@@ -675,11 +675,11 @@ export default function ProjectDetail() {
             </h2>
             <div className="space-y-3">
               {prediction.recommendations.map((rec, i) => (
-                <div key={i} className="flex gap-3 p-3 bg-slate-900 rounded-lg border border-slate-700">
-                  <span className="mt-0.5 w-5 h-5 rounded-full bg-indigo-600 text-white text-xs flex items-center justify-center flex-shrink-0">{i + 1}</span>
+                <div key={i} className="flex gap-3 p-3 bg-slate-950 rounded-lg border border-emerald-950/40">
+                  <span className="mt-0.5 w-5 h-5 rounded-full bg-emerald-600 text-white text-xs flex items-center justify-center flex-shrink-0">{i + 1}</span>
                   <div>
                     <div className="flex items-center gap-2">
-                      <p className="text-xs font-semibold text-indigo-400 uppercase tracking-wide">{rec.priority} · {rec.category}</p>
+                      <p className="text-xs font-semibold text-emerald-400 uppercase tracking-wide">{rec.priority} · {rec.category}</p>
                       <span className="text-[10px] text-slate-400">{rec.expected_impact}</span>
                     </div>
                     <p className="text-sm font-semibold text-slate-200 mt-1">{rec.title}</p>
@@ -694,11 +694,11 @@ export default function ProjectDetail() {
           <div className="card">
             <h2 className="text-base font-semibold text-white mb-4">Project Status Analysis</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-slate-900 rounded-xl p-4 border border-slate-700/60">
+              <div className="bg-slate-950 rounded-xl p-4 border border-emerald-950/40">
                 <p className="text-xs text-slate-400">Current project condition</p>
                 <p className="text-sm text-slate-200 mt-1">{prediction.project_status_analysis.current_project_condition}</p>
               </div>
-              <div className="bg-slate-900 rounded-xl p-4 border border-slate-700/60">
+              <div className="bg-slate-950 rounded-xl p-4 border border-emerald-950/40">
                 <p className="text-xs text-slate-400">Predicted outcome</p>
                 <div className="mt-2 space-y-1 text-sm text-slate-200">
                   <div className="flex justify-between"><span className="text-slate-400">Delay</span><span>{Math.round(prediction.project_status_analysis.predicted_outcome.delay_probability * 100)}%</span></div>
@@ -707,13 +707,13 @@ export default function ProjectDetail() {
                   <div className="flex justify-between"><span className="text-slate-400">Stability</span><span>{Math.round(prediction.project_status_analysis.predicted_outcome.requirement_instability_probability * 100)}%</span></div>
                 </div>
               </div>
-              <div className="bg-slate-900 rounded-xl p-4 border border-slate-700/60">
+              <div className="bg-slate-950 rounded-xl p-4 border border-emerald-950/40">
                 <p className="text-xs text-slate-400">Key risk drivers</p>
                 <ul className="mt-2 text-sm text-slate-200 list-disc pl-5 space-y-1">
                   {(prediction.project_status_analysis.key_risk_drivers || []).map((d) => <li key={d}>{d}</li>)}
                 </ul>
               </div>
-              <div className="bg-slate-900 rounded-xl p-4 border border-slate-700/60">
+              <div className="bg-slate-950 rounded-xl p-4 border border-emerald-950/40">
                 <p className="text-xs text-slate-400">Recommended next steps</p>
                 <ul className="mt-2 text-sm text-slate-200 list-disc pl-5 space-y-1">
                   {(prediction.project_status_analysis.recommended_next_steps || []).map((d) => <li key={d}>{d}</li>)}
@@ -729,7 +729,7 @@ export default function ProjectDetail() {
         <h2 className="text-base font-semibold text-white mb-4">Project Parameters</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
           {detailRows.map(([label, value]) => (
-            <div key={label} className="bg-slate-900 rounded-lg p-3">
+            <div key={label} className="bg-slate-950 rounded-lg p-3 border border-emerald-950/30">
               <p className="text-xs text-slate-500 mb-0.5">{label}</p>
               <p className="text-sm font-semibold text-slate-200">{value}</p>
             </div>

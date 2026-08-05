@@ -30,9 +30,9 @@ import pandas as pd
 
 
 def _repo_root() -> Path:
-    # backend/app/routes/ml.py -> repo root is parents[4]:
+    # backend/app/routes/ml.py -> repo root is parents[3]:
     # .../backend/app/routes/ml.py
-    return Path(__file__).resolve().parents[4]
+    return Path(__file__).resolve().parents[3]
 
 
 def _ensure_trained(repo_root: Path):

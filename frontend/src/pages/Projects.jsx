@@ -50,7 +50,7 @@ export default function Projects() {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
           {filtered.map(p => (
-            <Link key={p.id} to={`/projects/${p.id}`} className="card hover:border-indigo-600/50 transition-colors cursor-pointer block">
+            <Link key={p.id} to={`/projects/${p.id}`} className="card hover:border-emerald-500/50 transition-colors cursor-pointer block">
               <div className="flex justify-between items-start mb-3">
                 <h3 className="font-semibold text-white text-sm leading-tight max-w-[70%]">{p.project_name}</h3>
                 {p.predicted_risk

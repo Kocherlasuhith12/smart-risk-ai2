@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { projectsAPI, predictionsAPI } from '../services/api'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, LineChart, Line, Legend } from 'recharts'
 
-const COLORS = ['#ef4444', '#f59e0b', '#22c55e', '#6366f1']
+const COLORS = ['#ef4444', '#f59e0b', '#22c55e', '#0f766e']
 
 export default function Reports() {
   const [projects, setProjects] = useState([])
@@ -49,7 +49,7 @@ export default function Reports() {
       {/* Summary numbers */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {[
-          { label: 'Total Projects', value: summary?.total_projects, color: 'text-indigo-400' },
+          { label: 'Total Projects', value: summary?.total_projects, color: 'text-emerald-400' },
           { label: 'High Risk',      value: summary?.high_risk,      color: 'text-red-400' },
           { label: 'Medium Risk',    value: summary?.medium_risk,    color: 'text-yellow-400' },
           { label: 'Low Risk',       value: summary?.low_risk,       color: 'text-green-400' },
@@ -104,7 +104,7 @@ export default function Reports() {
               <XAxis dataKey="team" label={{ value: 'Team Size', position: 'insideBottom', offset: -2, fill: '#94a3b8', fontSize: 11 }} tick={{ fill: '#94a3b8', fontSize: 11 }} />
               <YAxis domain={[0, 10]} tick={{ fill: '#94a3b8', fontSize: 11 }} />
               <Tooltip contentStyle={{ background: '#1e293b', border: '1px solid #334155', borderRadius: '8px', color: '#e2e8f0' }} itemStyle={{ color: '#e2e8f0' }} labelStyle={{ color: '#94a3b8' }} />
-              <Line type="monotone" dataKey="score" stroke="#6366f1" strokeWidth={2} dot={{ fill: '#6366f1', r: 4 }} />
+              <Line type="monotone" dataKey="score" stroke="#10b981" strokeWidth={2} dot={{ fill: '#10b981', r: 4 }} />
             </LineChart>
           </ResponsiveContainer>
         ) : <p className="text-slate-500 text-sm text-center py-8">Add more projects to see trends</p>}
@@ -116,13 +116,13 @@ export default function Reports() {
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="text-left text-slate-500 border-b border-slate-700">
+              <tr className="text-left text-slate-500 border-b border-emerald-950/60">
                 {['Project', 'Team', 'Budget', 'Duration', 'Bugs', 'Testing%', 'Risk Level', 'Score'].map(h => (
                   <th key={h} className="pb-2 pr-4 font-medium">{h}</th>
                 ))}
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-700/50">
+            <tbody className="divide-y divide-emerald-950/30">
               {projects.map(p => (
                 <tr key={p.id} className="text-slate-300">
                   <td className="py-2 pr-4 font-medium text-white max-w-[140px] truncate">{p.project_name}</td>
