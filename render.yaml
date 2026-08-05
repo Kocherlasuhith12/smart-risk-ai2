@@ -25,11 +25,11 @@ services:
   # Frontend static service
   - type: web
     name: smart-risk-ai-frontend
-    env: static
+    runtime: static
     buildCommand: |
       npm install
       npm run build
-    publishDir: dist
+    staticPublishPath: dist
     rootDir: frontend
     envVars:
       - key: VITE_API_URL
