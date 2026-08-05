@@ -23,6 +23,22 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+from fastapi import Request
+from fastapi.responses import JSONResponse
+import traceback
+
+@app.exception_handler(Exception)
+async def global_exception_handler(request: Request, exc: Exception):
+    tb = "".join(traceback.format_exception(type(exc), exc, exc.__traceback__))
+    return JSONResponse(
+        status_code=500,
+        headers={"Access-Control-Allow-Origin": "*"},
+        content={
+            "detail": str(exc),
+            "traceback": tb
+        }
+    )
+
 app.include_router(auth.router)
 app.include_router(projects.router)
 app.include_router(predictions.router)
