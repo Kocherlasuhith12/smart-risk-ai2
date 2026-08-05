@@ -56,3 +56,26 @@ def root():
 @app.get("/health")
 def health():
     return {"status": "ok"}
+
+from fastapi import Depends
+from sqlalchemy.orm import Session
+
+@app.get("/debug-db")
+def debug_db(db: Session = Depends(get_db)):
+    import os
+    db_url = os.getenv("DATABASE_URL", "sqlite:///./smartrisk.db")
+    censored_url = db_url
+    if "@" in db_url:
+        censored_url = db_url.split("@")[-1]
+    
+    try:
+        from sqlalchemy import text
+        db.execute(text("SELECT 1"))
+        status = "connected"
+    except Exception as e:
+        status = f"error: {str(e)}"
+        
+    return {
+        "database_url_host": censored_url,
+        "connectivity": status
+    }
